@@ -122,16 +122,39 @@ public class Inventory : MonoBehaviour {
     public void AddItem(Item item)
     {
         for (int i = 0; i < 40; i++)
-            if (ItemArray[i].Id == item.Id)
+        {
+            if (ItemArray[i].ItemGO == null)
+            {
+                ItemArray[i] = new Item(item.Id, item.Count);
+                break;
+            }
+            else if (ItemArray[i].Id == item.Id)
                 if (ItemArray[i].Count < MaxStack)
                 {
                     ItemArray[i].Count++;
                     item.Count--;
                 }
+        }
     }
     void OnGUI()
     {
-        GUI.DrawTexture(new Rect(Screen.width / 2 - HotItemTex.width/2, 0, HotItemTex.width, HotItemTex.height), HotItemTex);
+        var hotbarX = Screen.width / 2 - HotItemTex.width / 2;
+        GUI.DrawTexture(new Rect(hotbarX, 0, HotItemTex.width, HotItemTex.height), HotItemTex);
+        for (int i = 0; i < 10; ++i)
+        {
+            if (ItemArray[i].Id > 0 && ItemArray[i].Count > 0)
+            {
+                GUI.DrawTexture(
+                    new Rect(
+                        hotbarX + (HotItemTex.width / 10.0f) * i - 1, 
+                        0,
+                        ItemArray[i].Icon.texture.width,
+                        ItemArray[i].Icon.texture.height
+                    ), 
+                    ItemArray[i].Icon.texture
+                );
+            }
+        }
         if(InventoryState==true)
             GUI.DrawTexture(new Rect(Screen.width/2-InventoryTex.width/2,Screen.height/2-InventoryTex.height/2,InventoryTex.width,InventoryTex.height),InventoryTex);
     }
@@ -143,6 +166,7 @@ public class Inventory : MonoBehaviour {
         readonly public Sprite Icon;
         readonly public GameObject ItemGO;
         public int Count;
+
         public Item (string name, string description, Sprite icon, GameObject gameobject,int id,int count)
         {
             this.Id = id;

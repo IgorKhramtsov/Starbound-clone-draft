@@ -54,6 +54,10 @@ public class WaterScript : MonoBehaviour {
     }
     void DrawWater()
     {
+        if (SprR.sprite != null)
+        {
+            DestroyImmediate(SprR.sprite, true);
+        }
         Sprite sprite;
         if (Physics2D.OverlapPoint(new Vector2(transform.position.x - 0.16f, transform.position.y), GroundMask) == true && Physics2D.OverlapPoint(new Vector2(transform.position.x + 0.16f, transform.position.y), GroundMask) == true)
         {
