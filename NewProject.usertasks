@@ -1,0 +1,9 @@
+<ListOfTask>
+  <Task file="" description="Растительность(деревья,кусты)" priority="High" />
+  <Task file="" description="Сделать ограничение камеры по краям" priority="High" completed="True" />
+  <Task file="" description="Генерация руд" priority="High" />
+  <Task file="" description="Поведение игрока в воде" />
+  <Task file="" description="Мобы" priority="High" />
+  <Task file="" description="Крафт" />
+  <Task file="" description="Разрушение блоков" priority="High" />
+</ListOfTask>
