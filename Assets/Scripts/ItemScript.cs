@@ -5,7 +5,7 @@ public class ItemScript : MonoBehaviour {
     public int id;
     public string Name;
     public string Description;
-    public int ItemCount;
+    public int ItemCount = 1;
     public GameObject GO;
     public Sprite icon;
     public Inventory.Item item;
@@ -65,6 +65,6 @@ public class ItemScript : MonoBehaviour {
             Destroy(this.gameObject);
         }
         else
-            this.GetComponent<Transform>().Translate(pers.transform.position * Time.deltaTime);
+            this.GetComponent<Transform>().Translate((pers.transform.position * Time.deltaTime) / 10);
     }
 }

@@ -56,7 +56,7 @@ public class WaterScript : MonoBehaviour {
     {
         if (SprR.sprite != null)
         {
-            DestroyImmediate(SprR.sprite, true);
+            DestroyImmediate(SprR.sprite, true);  // should be cached instead
         }
         Sprite sprite;
         if (Physics2D.OverlapPoint(new Vector2(transform.position.x - 0.16f, transform.position.y), GroundMask) == true && Physics2D.OverlapPoint(new Vector2(transform.position.x + 0.16f, transform.position.y), GroundMask) == true)
